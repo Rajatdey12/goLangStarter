@@ -34,11 +34,21 @@ func main() {
 
 	//Method delegation with multiple return in optimized way
 	resultop1, resultop2 := calculatorOptimised(i, z)
-	print(resultop1, " ::::::::::::: ", resultop2)
+	println(resultop1, " ::::::::::::: ", resultop2)
+
+	// convert types
+	convertTypes()
+
+	// After reusing & modifying i 2 times,
+	// it should be 40
+	fmt.Printf("%v", i)
+
+	// bit-wise operators
+	bitwiseOperation()
 
 }
 
-// CONSTS ANF VARIABLES
+// CONSTS AND VARIABLES
 
 func example1() {
 
@@ -100,4 +110,35 @@ func calculatorOptimised(x, y int) (sum, minus int) {
 	sum = x + y
 	minus = x - y
 	return
+}
+
+// Type conversion
+func convertTypes() {
+
+	// package level i value
+	// it should be 8.
+	println(i)
+
+	// changing i value
+	i = 40
+	j := float32(i) + .6
+
+	i = int(j) // Data is lost here
+
+	s := fmt.Sprint(j) // covert numeric datatypes to String format.
+
+	fmt.Printf("%v, %T\n", j, j)
+	fmt.Printf("%v, %T\n", i, i)
+	fmt.Printf("%v, %T\n", s, s)
+
+}
+
+// Bit wise operator
+func bitwiseOperation() {
+	i := 10
+	j := 3
+	fmt.Println(i & j)
+	fmt.Println(i | j)
+	fmt.Println(i ^ j)
+	fmt.Println(i &^ j)
 }
