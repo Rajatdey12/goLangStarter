@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"sort"
@@ -39,13 +40,24 @@ func main() {
 	// printExtPackage()
 	// helpers.TestGreater(9, 10)
 
-	intChan := make(chan int)
-	defer close(intChan)
+	// intChan := make(chan int)
+	// defer close(intChan)
 
-	/* Executing this function as goroutine */
-	go calculateRandom(intChan)
-	num := <-intChan
-	log.Println(num)
+	// /* Executing this function as goroutine */
+	// go calculateRandom(intChan)
+	// num := <-intChan
+	// log.Println(num)
+
+	/*marshalling & unmarshalling*/
+	// helpers.UnmarshallToStructFromJSON()
+	// helpers.MarshallToJSON()
+	result, err := divide(100.0, 10.0)
+
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	log.Println(`The result is :::`, result)
 }
 
 func something(name string) string {
@@ -66,6 +78,7 @@ func swap(sw []int) {
 
 }
 
+/* Map in go */
 func calc(data []int) {
 	myMap := make(map[int]int)
 	for i := 0; i < len(data); i++ {
@@ -227,4 +240,16 @@ func calculateRandom(intChan chan int) {
 	const numPool = 100
 	randomNum := helpers.RandomNum(numPool)
 	intChan <- randomNum
+}
+
+func divide(x, y float32) (float32, error) {
+
+	var res float32
+
+	if y == 0 {
+		return res, errors.New("Cannot divide by 0")
+	}
+	res = x / y
+
+	return res, nil
 }
