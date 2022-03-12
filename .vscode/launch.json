@@ -9,14 +9,14 @@
             "type": "go",
             "request": "launch",
             "mode": "test",
-            "program": "${workspaceFolder}/ws"
+            "program": "${workspaceFolder}/cmd/web"
         },
         {
             "name": "Launch Package",
             "type": "go",
             "request": "launch",
             "mode": "debug",
-            "program": "${workspaceFolder}/ws"
+            "program": "${workspaceFolder}/cmd/web"
         }
     ]
 }
